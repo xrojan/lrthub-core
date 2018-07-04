@@ -5,8 +5,15 @@ from django.db import models
 
 
 # Create your models here.
+class Type(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
 class Feed(models.Model):
-    type_id = models.IntegerField()
+    type_id = models.ForeignKey(Type, on_delete=models.PROTECT)
     cover_image = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     content = models.TextField()
@@ -16,10 +23,3 @@ class Feed(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class Type(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
