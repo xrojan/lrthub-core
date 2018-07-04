@@ -14,7 +14,7 @@ class FeedList(ListView):
     model = Feed
 
 
-class FeedVied(DetailView):
+class FeedDetail(DetailView):
     model = Feed
 
 
