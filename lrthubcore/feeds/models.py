@@ -5,7 +5,7 @@ from django.db import models
 
 
 # Create your models here.
-class Type(models.Model):
+class FeedType(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
@@ -13,7 +13,7 @@ class Type(models.Model):
 
 
 class Feed(models.Model):
-    type_id = models.ForeignKey(Type, on_delete=models.PROTECT)
+    type_id = models.ForeignKey(FeedType, on_delete=models.PROTECT)
     cover_image = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     content = models.TextField()

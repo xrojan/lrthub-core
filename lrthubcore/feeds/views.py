@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Feed
+from .models import Feed, FeedType
 
 
 # Create your views here.
@@ -33,3 +33,33 @@ class FeedUpdate(UpdateView):
 class FeedDelete(DeleteView):
     model = Feed
     success_url = reverse_lazy('feed_list')
+
+
+class FeedTypeList(ListView):
+    model = FeedType
+    template_name = 'types/feed_type_list.html'
+
+
+class FeedTypeDetail(DetailView):
+    model = FeedType
+    template_name = 'types/feed_type_detail.html'
+
+
+class FeedTypeCreate(CreateView):
+    model = FeedType
+    template_name = 'types/feed_type_form.html'
+    fields = ['name']
+    success_url = reverse_lazy('feed_type_list')
+
+
+class FeedTypeUpdate(UpdateView):
+    model = FeedType
+    template_name = 'types/feed_type_form.html'
+    fields = ['name']
+    success_url = reverse_lazy('feed_type_list')
+
+
+class FeedTypeDelete(DeleteView):
+    model = FeedType
+    template_name = 'types/feed_type_confirm_delete.html'
+    success_url = reverse_lazy('feed_type_list')

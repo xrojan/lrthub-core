@@ -6,6 +6,7 @@
     <thead>
     <tr>
         <th>Name</th>
+        <th>Type</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
@@ -14,6 +15,7 @@
     {% for feed in object_list %}
     <tr>
         <td><a href="{% url "feed_detail" feed.id %}">{{ feed.title }}</a></td>
+        <td>{{ feed.type_id }}</td>
         <td><a href="{% url "feed_edit" feed.id %}">Edit</a></td>
         <td><a href="{% url "feed_delete" feed.id %}">Delete</a></td>
     </tr>
