@@ -20,15 +20,3 @@ class FeedList(generics.ListAPIView):
 class FeedDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Feed.objects.all()
     serializer_class = serializers.FeedSerializers
-
-    def put(self, request, *args, **kwargs):
-        instance = self.get_object()
-        serializer = self.get_serializer(instance)
-        response = {"status_code": status.HTTP_200_OK, "message": "Success", "result": serializer.data}
-        return Response(response)
-
-    def partial_update(self, request, *args, **kwargs):
-        instance = self.get_object()
-        serializer = self.get_serializer(instance)
-        response = {"status_code": status.HTTP_200_OK, "message": "Success", "result": serializer.data}
-        return Response(response)
