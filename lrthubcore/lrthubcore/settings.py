@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_api_key',
     'feeds',
 ]
 
@@ -122,5 +123,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'lrthubcore.utils.custom_exception_handler'
+    'EXCEPTION_HANDLER': 'lrthubcore.utils.custom_exception_handler',
+    'DEFAULT_PERMISSION_CLASSES': (
+        'lrthubcore.permissions.IsPostOrIsAuthenticated',
+        'rest_framework_api_key.permissions.HasAPIAccess',
+    )
 }
