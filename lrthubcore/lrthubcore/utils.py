@@ -10,7 +10,10 @@ def custom_exception_handler(exc, context):
     # Appends status code the base exception result
     if response is not None:
         response.data['status_code'] = response.status_code
-        response.data['message'] = response.data['detail']
-        del response.data['detail']
+        try:
+            response.data['message'] = response.data['detail']
+            del response.data['detail']
+        except KeyError:
+            print(KeyError)
 
     return response

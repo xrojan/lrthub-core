@@ -12,7 +12,7 @@ class FeedTypeSerializers(serializers.ModelSerializer):
 
 
 class FeedSerializers(serializers.ModelSerializer):
-    type = FeedTypeSerializers(source='type_id', many=False)
+    type = FeedTypeSerializers(source='type_id', many=False, read_only=True)
 
     class Meta:
         fields = ('type', 'type_id', 'cover_image', 'title', 'content', 'is_deleted', 'created_on', 'updated_at')
