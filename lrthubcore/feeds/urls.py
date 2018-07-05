@@ -11,7 +11,7 @@ urlpatterns = [
     path('types/create/', views.FeedTypeCreate.as_view(), name='feed_type_create'),
     path('types/<int:pk>', views.FeedTypeDetail.as_view(), name='feed_type_detail'),
     path('types/edit/<int:pk>', views.FeedTypeUpdate.as_view(), name='feed_type_edit'),
-    path('types/delete/<int:pk>', views.FeedTypeDelete.as_view(), name='feed_type_delete),
+    path('types/delete/<int:pk>', views.FeedTypeDelete.as_view(), name='feed_type_delete'),
 
     # API
     path('api/v1/', views.FeedListApi.as_view(), name='api_feed_list'),
