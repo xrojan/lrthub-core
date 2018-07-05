@@ -5,6 +5,13 @@ from rest_framework.views import exception_handler
 
 
 def custom_exception_handler(exc, context):
+    """
+    Global exception handler modifier
+    Returns output with additional details (eg. with status code)
+    :param exc
+    :param context
+    :return: response validated / modified
+    """
     response = exception_handler(exc, context)
 
     # Appends status code the base exception result
