@@ -1,7 +1,9 @@
 from django.urls import path
 from . import views
+from .api import views as api
 
 urlpatterns = [
+    # View Routes
     path('', views.FeedList.as_view(), name='feed_list'),
     path('create/', views.FeedCreate.as_view(), name='feed_create'),
     path('<int:pk>', views.FeedDetail.as_view(), name='feed_detail'),
@@ -13,7 +15,7 @@ urlpatterns = [
     path('types/edit/<int:pk>', views.FeedTypeUpdate.as_view(), name='feed_type_edit'),
     path('types/delete/<int:pk>', views.FeedTypeDelete.as_view(), name='feed_type_delete'),
 
-    # API
-    path('api/v1/', views.FeedListApi.as_view(), name='api_feed_list'),
-    path('api/v1/<int:pk>', views.FeedDetailApi.as_view(), name='api_feed_detail')
+    # API Router
+    path('api/', api.FeedListApi.as_view(), name='api_feed_list'),
+    path('api/<int:pk>', api.FeedDetailApi.as_view(), name='api_feed_detail')
 ]

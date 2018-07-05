@@ -2,7 +2,7 @@
 # @email code@jmdg.io
 
 from rest_framework import serializers
-from . import models
+from .. import models
 
 
 class FeedTypeSerializers(serializers.ModelSerializer):
