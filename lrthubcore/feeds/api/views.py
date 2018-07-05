@@ -12,7 +12,7 @@ class FeedList(generics.ListCreateAPIView):
 
     def create(self, request, *args, **kwargs):
         super(FeedList, self).create(request, args, kwargs)
-        response = {"status_code": status.HTTP_200_OK, "message": "Feed created successfully", "result": request.data}
+        response = {"status_code": status.HTTP_200_OK, "message": "Successfully created", "result": request.data}
         return Response(response)
 
     def list(self, request, *args, **kwargs):
@@ -25,3 +25,8 @@ class FeedList(generics.ListCreateAPIView):
 class FeedDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Feed.objects.all()
     serializer_class = serializers.FeedSerializers
+
+    def delete(self, request, *args, **kwargs):
+        super(FeedDetail, self).delete(request, args, kwargs)
+        response = {"status_code": status.HTTP_200_OK, "message": "Successfully deleted", "result": request.data}
+        return Response(response)
