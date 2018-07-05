@@ -16,6 +16,6 @@ urlpatterns = [
     path('types/delete/<int:pk>', views.FeedTypeDelete.as_view(), name='feed_type_delete'),
 
     # API Router
-    path('api/', api.FeedListApi.as_view(), name='api_feed_list'),
-    path('api/<int:pk>', api.FeedDetailApi.as_view(), name='api_feed_detail')
+    path('api/', api.FeedList.as_view(), name='api_feed_list'),
+    path('api/<int:pk>', api.FeedDetail.as_view(), name='api_feed_detail')
 ]

@@ -15,5 +15,5 @@ class FeedSerializers(serializers.ModelSerializer):
     type = FeedTypeSerializers(source='type_id', many=False)
 
     class Meta:
-        fields = ('type', 'cover_image', 'title', 'content', 'is_deleted', 'created_on', 'updated_at')
+        fields = ('type', 'type_id', 'cover_image', 'title', 'content', 'is_deleted', 'created_on', 'updated_at')
         model = models.Feed
