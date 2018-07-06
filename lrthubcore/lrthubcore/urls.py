@@ -19,10 +19,11 @@ from django.urls import path
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
 
 urlpatterns = [
-    path('api/token/generate', obtain_jwt_token),
-    path('api/token/refresh', refresh_jwt_token),
-    path('api/token/verify', verify_jwt_token),
-    path('api/auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('feeds/', include('feeds.urls')),
+    path('api/v1/token/generate', obtain_jwt_token),
+    path('api/v1/token/refresh', refresh_jwt_token),
+    path('api/v1/token/verify', verify_jwt_token),
+    path('api/v1/auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/v1/feeds/', include('feeds.urls')),
+    path('api/v1/feedback/', include('feedback.urls')),
     url(r'^admin/', admin.site.urls),
 ]
