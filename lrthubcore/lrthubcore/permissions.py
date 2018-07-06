@@ -4,7 +4,7 @@
 from rest_framework import permissions
 
 
-class IsPostOrIsAuthenticated(permissions.BasePermission):
+class PermissionHandler(permissions.BasePermission):
     """
     Global permission to flag critical updates
     :param: self
@@ -12,10 +12,11 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
     :param: view
     :return: boolean if user is authenticate
     """
+
     def has_permission(self, request, view):
         # Allows permission from without authentication but requires api key
         # GET, HEAD, OPTIONS
-        if request.method in permissions.SAFE_METHODS:
+        if request.method in permissions.SAFE_METHODS or request.user and request.user.is_authenticated:
             return True
 
         # NOTE:
