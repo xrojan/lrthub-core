@@ -22,3 +22,8 @@ class FeedTypeAdmin(admin.ModelAdmin):
     # noinspection PyMethodMayBeStatic
     def feed_count(self, obj):
         return obj.feed_set.count()
+
+
+admin.site.index_title = "LRTHub"
+admin.site.site_title = "Core Administration"
+admin.site.site_header = "LRTHub Core"
