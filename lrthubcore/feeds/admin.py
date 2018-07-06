@@ -7,7 +7,7 @@ from django.contrib import admin
 @admin.register(Feed)
 class FeedAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_on'
-    search_fields = ['type_id', 'title', 'content', ]
+    search_fields = ['type_id__name', 'title', 'content', ]
     list_display = ('type_id', 'title', 'content')
     list_filter = ('type_id', 'is_deleted',)
 
