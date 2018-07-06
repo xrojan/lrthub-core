@@ -6,15 +6,23 @@ from . import serializers
 from . import pagination
 from rest_framework import generics, status
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 
-class FeedbackConversationList(generics.ListCreateAPIView):
+class FeedbackConversationList(generics.ListAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = FeedbackConversation.objects.all()
+    serializer_class = serializers.FeedbackConversationSerializers
+    pagination_class = pagination.CustomPagination
+
+
+class FeedbackConversationCreate(generics.CreateAPIView):
     queryset = FeedbackConversation.objects.all()
     serializer_class = serializers.FeedbackConversationSerializers
     pagination_class = pagination.CustomPagination
 
     def create(self, request, *args, **kwargs):
-        super(FeedbackConversationList, self).create(request, args, kwargs)
+        super(FeedbackConversationCreate, self).create(request, args, kwargs)
         response = {"status_code": status.HTTP_200_OK, "message": "Successfully created", "result": request.data}
         return Response(response)
 

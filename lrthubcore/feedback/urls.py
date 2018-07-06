@@ -7,5 +7,6 @@ from .api import views
 
 urlpatterns = [
     path('', views.FeedbackConversationList.as_view(), name='api_feedback_list'),
+    path('create/', views.FeedbackConversationCreate.as_view(), name='api_feedback_create'),
     path('<int:pk>/', views.FeedbackConversationDetail.as_view(), name='api_feedback_detail'),
 ]
