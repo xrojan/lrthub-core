@@ -11,7 +11,6 @@ class Company(models.Model):
     contact_description = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    is_deleted = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
