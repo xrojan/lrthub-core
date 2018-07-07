@@ -25,6 +25,7 @@ class RatingCreate(generics.CreateAPIView):
 
 
 class RatingDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAuthenticated,)
     queryset = Rating.objects.all()
     serializer_class = serializers.RatingSerializer
 

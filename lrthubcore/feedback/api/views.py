@@ -74,6 +74,7 @@ class FeedbackMessageCreate(generics.CreateAPIView):
 
 
 class FeedbackMessageDetail(generics.RetrieveDestroyAPIView):
+    permission_classes = (IsAuthenticated,)
     queryset = FeedbackMessage.objects.all()
     serializer_class = serializers.FeedbackMessageSerializers
 
