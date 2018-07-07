@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import datetime
+
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -27,7 +28,7 @@ SECRET_KEY = '#&780fym6vs4ma6*&9p6he_(spros6pazapj=dp_-vmy57shbw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [config('ALLOWED_HOSTS')]
+ALLOWED_HOSTS = [config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])]
 
 # Application definition
 
