@@ -12,10 +12,17 @@ class FeedAdmin(admin.ModelAdmin):
     list_filter = ('type_id', 'is_deleted',)
 
 
+class FeedAdminInline(admin.TabularInline):
+    model = Feed
+    fields = ('title', 'content',)
+    readonly_fields = ('title', 'content',)
+
+
 @admin.register(FeedType)
 class FeedTypeAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_on'
     search_fields = ['name', ]
+    inlines = (FeedAdminInline,)
     list_display = ('name', 'feed_count', 'created_on', 'updated_at')
     list_filter = ('is_deleted',)
 
