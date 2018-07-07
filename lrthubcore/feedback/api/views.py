@@ -1,6 +1,7 @@
 # Created by Joshua de Guzman on 06/07/2018
 # @email code@jmdg.io
 
+from django_filters.rest_framework import DjangoFilterBackend
 from ..models import FeedbackConversation, FeedbackMessage
 from . import serializers
 from . import pagination
@@ -51,3 +52,12 @@ class FeedbackConversationDetail(generics.RetrieveUpdateDestroyAPIView):
         super(FeedbackConversationDetail, self).delete(request, args, kwargs)
         response = {"status_code": status.HTTP_200_OK, "message": "Successfully deleted"}
         return Response(response)
+
+
+class FeedbackMessageList(generics.ListAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = FeedbackMessage.objects.all()
+    filter_backends = (DjangoFilterBackend,)
+    serializer_class = serializers.FeedbackMessageSerializers
+    pagination_class = pagination.CustomPagination
+    filter_fields = ('conversation_id', 'sender_id',)

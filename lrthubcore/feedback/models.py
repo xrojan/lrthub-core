@@ -29,10 +29,11 @@ class FeedbackConversation(models.Model):
 class FeedbackMessage(models.Model):
     conversation_id = models.ForeignKey(FeedbackConversation, on_delete=models.CASCADE)
     message = models.TextField()
+    sender_id = models.ForeignKey(User, on_delete=models.PROTECT)
 
     created_on = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.message
+        return '%s' % self.sender_id
