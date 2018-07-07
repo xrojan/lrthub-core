@@ -9,5 +9,7 @@ urlpatterns = [
     path('', views.FeedbackConversationList.as_view(), name='api_feedback_list'),
     path('create/', views.FeedbackConversationCreate.as_view(), name='api_feedback_create'),
     path('<int:pk>/', views.FeedbackConversationDetail.as_view(), name='api_feedback_detail'),
-    path('messages/', views.FeedbackMessageList.as_view(), name='api_feedback_message_lists'),
+    path('messages/', views.FeedbackMessageList.as_view(), name='api_feedback_message_list'),
+    path('messages/create/', views.FeedbackMessageCreate.as_view(), name='api_feedback_message_create'),
+    path('messages/<int:pk>/', views.FeedbackMessageDetail.as_view(), name='api_feedback_message_detail'),
 ]

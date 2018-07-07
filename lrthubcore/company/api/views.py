@@ -1,6 +1,5 @@
 # Created by Joshua de Guzman on 07/07/2018
 # @email code@jmdg.io
-
 from rest_framework.response import Response
 from ..models import Company
 from . import serializers
