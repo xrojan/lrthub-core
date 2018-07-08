@@ -27,5 +27,6 @@ urlpatterns = [
     path('api/v1/feedback/', include('feedback.urls')),
     path('api/v1/ratings/', include('ratings.urls')),
     path('api/v1/company/', include('company.urls')),
+    path('api/v1/ads/', include('ads.urls')),
     url(r'^admin/', admin.site.urls),
 ]

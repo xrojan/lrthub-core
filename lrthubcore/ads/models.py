@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 class Advertisement(models.Model):
     title = models.CharField(max_length=255)
-    description = models.CharField(max_length=255)
+    description = models.TextField()
     thumbnail = models.CharField(max_length=255)
     cover_image = models.CharField(max_length=255)
     video_url = models.CharField(max_length=255)
