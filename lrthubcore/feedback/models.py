@@ -29,7 +29,8 @@ class FeedbackConversation(models.Model):
 class FeedbackMessage(models.Model):
     conversation_id = models.ForeignKey(FeedbackConversation, on_delete=models.CASCADE)
     message = models.TextField()
-    sender_id = models.ForeignKey(User, on_delete=models.PROTECT)
+    sender_id = models.ForeignKey(User, on_delete=models.PROTECT, related_name='message_sender_user_set')
+    receiver_id = models.ForeignKey(User, on_delete=models.PROTECT, related_name='message_receiver_user_set')
 
     created_on = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

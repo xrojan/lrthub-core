@@ -25,9 +25,10 @@ class FeedbackConversationSerializers(serializers.ModelSerializer):
 
 
 class FeedbackMessageSerializers(serializers.ModelSerializer):
-    conversation = FeedbackConversationSerializers(source='conversation_id', many=False, read_only=True)
     sender = UserSerializer(source='sender_id', many=False, read_only=True)
+    receiver = UserSerializer(source='receiver_id', many=False, read_only=True)
 
     class Meta:
-        fields = ('id', 'conversation_id', 'conversation', 'sender_id', 'sender', 'message', 'created_on', 'is_deleted')
+        fields = ('id', 'conversation_id', 'sender_id', 'sender', 'receiver_id', 'receiver', 'message', 'created_on',
+                  'is_deleted')
         model = models.FeedbackMessage
