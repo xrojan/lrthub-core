@@ -7,7 +7,6 @@ from django.db import models
 # Create your models here.
 class FeedType(models.Model):
     name = models.CharField(max_length=255)
-    posted_date = models.DateTimeField()
     is_deleted = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -21,6 +20,7 @@ class Feed(models.Model):
     cover_image = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     content = models.TextField()
+    posted_date = models.DateTimeField()
     is_deleted = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
