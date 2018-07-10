@@ -7,7 +7,7 @@ from .. import models
 
 class FeedTypeSerializers(serializers.ModelSerializer):
     class Meta:
-        fields = ('id', 'name')
+        fields = ('id', 'name', 'is_on_main_page')
         model = models.FeedType
 
 
