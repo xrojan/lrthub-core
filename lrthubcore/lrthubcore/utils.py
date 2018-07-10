@@ -33,7 +33,5 @@ def jwt_response_payload_handler(token, user=None, request=None):
     return {
         'status_code': status.HTTP_200_OK,
         'message': 'Successfully generated',
-        'result': {
-            'user': user
-        }
+        'result': user
     }
