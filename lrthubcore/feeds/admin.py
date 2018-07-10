@@ -23,7 +23,7 @@ class FeedTypeAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_on'
     search_fields = ['name', ]
     inlines = (FeedAdminInline,)
-    list_display = ('name', 'feed_count', 'created_on', 'updated_at')
+    list_display = ('name', 'feed_count', 'is_on_main_page', 'created_on', 'updated_at')
     list_filter = ('is_deleted',)
 
     # noinspection PyMethodMayBeStatic
