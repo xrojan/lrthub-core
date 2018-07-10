@@ -13,11 +13,11 @@ class FeedList(generics.ListCreateAPIView):
 
     def get_queryset(self):
         queryset = Feed.objects.all()
-        is_on_main_page = self.request.GET.get('is_on_main_page', None)
+        is_featured = self.request.GET.get('is_featured', None)
 
-        if is_on_main_page is not None and (is_on_main_page.lower() == 'true' or is_on_main_page.lower() == 'false'):
-            is_on_main_page = is_on_main_page[0].upper() + is_on_main_page[1:].lower()
-            return queryset.filter(type_id__is_on_main_page=is_on_main_page)
+        if is_featured is not None and (is_featured.lower() == 'true' or is_featured.lower() == 'false'):
+            is_featured = is_featured[0].upper() + is_featured[1:].lower()
+            return queryset.filter(type_id__is_featured=is_featured)
         else:
             return queryset
 
