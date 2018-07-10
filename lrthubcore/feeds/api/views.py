@@ -8,9 +8,18 @@ from rest_framework.response import Response
 
 
 class FeedList(generics.ListCreateAPIView):
-    queryset = Feed.objects.all()
     serializer_class = serializers.FeedSerializers
     pagination_class = pagination.CustomPagination
+
+    def get_queryset(self):
+        queryset = Feed.objects.all()
+        is_on_main_page = self.request.GET.get('is_on_main_page', None)
+
+        if is_on_main_page is not None and (is_on_main_page.lower() == 'true' or is_on_main_page.lower() == 'false'):
+            is_on_main_page = is_on_main_page[0].upper() + is_on_main_page[1:].lower()
+            return queryset.filter(type_id__is_on_main_page=is_on_main_page)
+        else:
+            return queryset
 
     def create(self, request, *args, **kwargs):
         super(FeedList, self).create(request, args, kwargs)
