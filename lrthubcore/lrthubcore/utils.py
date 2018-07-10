@@ -1,7 +1,8 @@
 # Created by Joshua de Guzman on 05/07/2018
 # @email code@jmdg.io
-
+from rest_framework import status
 from rest_framework.views import exception_handler
+from .serializers import UserSerializer
 
 
 def custom_exception_handler(exc, context):
@@ -24,3 +25,11 @@ def custom_exception_handler(exc, context):
             print(KeyError)
 
     return response
+
+
+def jwt_response_payload_handler(token, user=None, request=None):
+    return {
+        'status_code': status.HTTP_200_OK,
+        'token': token,
+        'user': UserSerializer(user, context={'request': request}).data
+    }
