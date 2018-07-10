@@ -17,7 +17,7 @@ class FeedList(generics.ListCreateAPIView):
 
         if is_featured is not None and (is_featured.lower() == 'true' or is_featured.lower() == 'false'):
             is_featured = is_featured[0].upper() + is_featured[1:].lower()
-            return queryset.filter(type_id__is_featured=is_featured)
+            return queryset.filter(is_featured=is_featured)
         else:
             return queryset
 
