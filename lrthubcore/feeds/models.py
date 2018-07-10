@@ -17,6 +17,7 @@ class FeedType(models.Model):
 
 
 class Feed(models.Model):
+    is_featured = models.BooleanField(default=False)
     type_id = models.ForeignKey(FeedType, on_delete=models.PROTECT)
     cover_image = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
