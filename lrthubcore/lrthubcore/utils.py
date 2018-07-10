@@ -28,11 +28,12 @@ def custom_exception_handler(exc, context):
 
 
 def jwt_response_payload_handler(token, user=None, request=None):
+    user = UserSerializer(user, context={'request': request}).data
+    user['token'] = token
     return {
         'status_code': status.HTTP_200_OK,
         'message': 'Successfully generated',
         'result': {
-            'token': token,
-            'user': UserSerializer(user, context={'request': request}).data
+            'user': user
         }
     }
