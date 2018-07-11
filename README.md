@@ -17,4 +17,4 @@ A Python enabled backend built on top of Django and DRF (DjanoRestFramework)
 
 ## License
 
-LRTHub - CORE is released under the BS3 license. [See LICENSE](https://github.com/joshuadeguzman/lrthub-core/blob/master/LICENSE) for details.
+LRTHub - CORE is released under the BSD 3-Clause License. [See LICENSE](https://github.com/joshuadeguzman/lrthub-core/blob/master/LICENSE) for details.
