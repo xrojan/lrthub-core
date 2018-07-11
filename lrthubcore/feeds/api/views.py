@@ -1,6 +1,8 @@
 # Created by Joshua de Guzman on 05/07/2018
 # @email code@jmdg.io
-from ..models import Feed, FeedType
+
+from rest_framework.filters import SearchFilter
+from ..models import Feed
 from . import serializers
 from . import pagination
 from rest_framework import generics, status
@@ -10,6 +12,8 @@ from rest_framework.response import Response
 class FeedList(generics.ListCreateAPIView):
     serializer_class = serializers.FeedSerializers
     pagination_class = pagination.CustomPagination
+    filter_backends = (SearchFilter,)
+    search_fields = ('title', 'content', 'date_posted',)
 
     def get_queryset(self):
         queryset = Feed.objects.all()
