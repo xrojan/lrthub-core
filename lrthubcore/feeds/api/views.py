@@ -9,11 +9,17 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 
 
-class FeedList(generics.ListCreateAPIView):
+class FeedListAll(generics.ListCreateAPIView):
+    queryset = Feed.objects.all()
     serializer_class = serializers.FeedSerializers
     pagination_class = pagination.CustomPagination
     filter_backends = (SearchFilter,)
     search_fields = ('title', 'content', 'date_posted',)
+
+
+class FeedList(generics.ListCreateAPIView):
+    serializer_class = serializers.FeedSerializers
+    pagination_class = pagination.CustomPagination
 
     def get_queryset(self):
         queryset = Feed.objects.all()
