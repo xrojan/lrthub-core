@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'feedback',
     'ratings',
     'ads',
+    'faqs'
 ]
 
 MIDDLEWARE = [
