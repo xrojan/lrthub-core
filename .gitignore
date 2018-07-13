@@ -10,8 +10,8 @@ __pycache__/
 local_settings.py
 db.sqlite3
 media
-static/
-staticfiles/
+lrthubcore/lrthubcore/static/
+lrthubcore/lrthubcore/staticfiles/
 
 ### Linux ###
 *~
