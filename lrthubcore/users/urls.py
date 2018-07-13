@@ -2,9 +2,8 @@
 # @email code@jmdg.io
 
 from django.urls import path
-from . import views
 from .api import views
 
 urlpatterns = [
-
+    path('create/', views.UserCreate.as_view(), name='api_user_create')
 ]
