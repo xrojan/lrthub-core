@@ -10,14 +10,19 @@
     <link rel="stylesheet" href="{% static 'faqs/css/reset.css' %}"/> <!-- CSS reset -->
     <link rel="stylesheet" href="{% static 'faqs/css/style.css' %}"/> <!-- Resource style -->
     <script src="{% static 'faqs/js/modernizr.js' %}"></script> <!-- Modernizr -->
-    <title>FAQ List</title>
+    <title>LRTHub | LRMC FAQs</title>
 </head>
 <body>
+<header>
+    <h1>LRTHub | LRMC - Frequently Asked Questions</h1>
+</header>
 <section class="cd-faq">
     <div class="cd-faq-items">
         {% if latest_faq_list %}
             <ul id="basics" class="cd-faq-group">
-                <li class="cd-faq-title"><h2>LRMC - Frequently Asked Questions</h2></li>
+                <li class="cd-faq-title">
+                    <h2>This data set powers LRTHUb's ChatBot Integration</h2>
+                </li>
                 {% for faq in latest_faq_list %}
                     <li>
                         <a class="cd-faq-trigger" href="#0">{{ faq.question }}</a>

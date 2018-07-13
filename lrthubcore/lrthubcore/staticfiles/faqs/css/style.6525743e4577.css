@@ -203,9 +203,9 @@ header h1 {
 .cd-faq-items {
   position: fixed;
   height: 100%;
-  width: 90%;
+  width: 100%;
   top: 0;
-  right: 0;
+  left: 0;
   background: #ffffff;
   padding: 0 5% 1em;
   overflow: auto;
@@ -392,7 +392,7 @@ header h1 {
     top: 50%;
     height: 2px;
     width: 13px;
-    background: #50b3c0;
+    background: #cfdca0;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -webkit-transition-property: -webkit-transform;
