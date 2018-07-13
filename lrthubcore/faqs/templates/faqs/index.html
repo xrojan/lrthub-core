@@ -1,35 +1,39 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="{% static 'faqs/css/reset.css' %}"/> <!-- CSS reset -->
+    <link rel="stylesheet" href="{% static 'faqs/css/style.css' %}"/> <!-- Resource style -->
+    <script src="{% static 'faqs/js/modernizr.js' %}"></script> <!-- Modernizr -->
     <title>FAQ List</title>
 </head>
 <body>
-
-{% if latest_faq_list %}
-    <ul>
-        {% for faq in latest_faq_list %}
-            <li>
-                <h2>
-                    <a href="/api/v1/faqs/list/#{{ faq.id }}">
-                        {{ faq.question }}
-                    </a>
-                </h2>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <ul>
-        {% for faq in latest_faq_list %}
-            <li>
-                <a name={{ faq.id }}></a>
-                <p>{{ faq.answer }}</p>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
-
+<section class="cd-faq">
+    <div class="cd-faq-items">
+        {% if latest_faq_list %}
+            <ul id="basics" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>LRMC - Frequently Asked Questions</h2></li>
+                {% for faq in latest_faq_list %}
+                    <li>
+                        <a class="cd-faq-trigger" href="#0">{{ faq.question }}</a>
+                        <div class="cd-faq-content">
+                            <p>
+                                {{ faq.answer }}
+                            </p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</section>
+<script src="{% static 'faqs/js/jquery-2.1.1.js' %}"></script>
+<script src="{% static 'faqs/js/jquery.mobile.custom.min.js' %}"></script>
+<script src="{% static 'faqs/js/main.js' %}"></script>  <!-- Resource jQuery -->
 </body>
 </html>
