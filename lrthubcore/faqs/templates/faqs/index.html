@@ -8,12 +8,24 @@
 
 {% if latest_faq_list %}
     <ul>
-    {% for faq in latest_faq_list %}
-        <li>
-            <h2>{{ faq.question }}</h2>
-            <p>{{ faq.answer }}</p>
-        </li>
-    {% endfor %}
+        {% for faq in latest_faq_list %}
+            <li>
+                <h2>
+                    <a href="/api/v1/faqs/list/#{{ faq.id }}">
+                        {{ faq.question }}
+                    </a>
+                </h2>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <ul>
+        {% for faq in latest_faq_list %}
+            <li>
+                <a name={{ faq.id }}></a>
+                <p>{{ faq.answer }}</p>
+            </li>
+        {% endfor %}
     </ul>
 {% else %}
     <p>No polls are available.</p>
