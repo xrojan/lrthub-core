@@ -49,7 +49,7 @@ class UserProfileEmploymentTypeList(generics.ListAPIView):
 
 
 class UserProfileDisabilityList(generics.ListAPIView):
-    queryset = models.Disabilities.objects.all()
+    queryset = models.Disability.objects.all()
     serializer_class = serializers.DisabilitiesSerializer
 
 

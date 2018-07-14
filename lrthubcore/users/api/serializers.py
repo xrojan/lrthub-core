@@ -56,7 +56,7 @@ class MaritalStatusSerializer(serializers.ModelSerializer):
 class DisabilitiesSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('id', 'name',)
-        model = models.Disabilities
+        model = models.Disability
 
 
 class UserProfileSerializer(serializers.ModelSerializer):

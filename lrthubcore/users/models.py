@@ -39,7 +39,7 @@ class MaritalStatus(models.Model):
         return self.name
 
 
-class Disabilities(models.Model):
+class Disability(models.Model):
     name = models.CharField(max_length=255)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -65,7 +65,7 @@ class UserProfile(models.Model):
     nationality_id = models.ForeignKey(Nationality, on_delete=models.PROTECT)
     marital_status_id = models.ForeignKey(MaritalStatus, on_delete=models.PROTECT)
     employment_status_id = models.ForeignKey(EmploymentType, on_delete=models.PROTECT)
-    disabilities = models.ManyToManyField(Disabilities, null=True, blank=True)
+    disabilities = models.ManyToManyField(Disability, null=True, blank=True)
 
     is_verified = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
