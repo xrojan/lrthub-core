@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework import status, generics
 
 from .. import models
+from . import pagination
 from . import serializers
 
 
@@ -55,7 +56,7 @@ class UserProfileDisabilityList(generics.ListAPIView):
 
 class UserProfileList(generics.ListCreateAPIView):
     serializer_class = serializers.UserProfileSerializer
-
+    pagination_class = pagination.CustomPagination
     def get_queryset(self):
         queryset = models.UserProfile.objects.all()
         user_id = int(self.request.GET.get('user_id', None))
