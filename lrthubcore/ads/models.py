@@ -6,10 +6,9 @@ from django.db import models
 class Advertisement(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    thumbnail = models.CharField(max_length=255)
-    cover_image = models.CharField(max_length=255)
+    interstitial_image = models.CharField(max_length=255)
+    banner_ad_image = models.CharField(max_length=255)
     video_url = models.CharField(max_length=255, blank=True)
-    view_hits = models.BigIntegerField(default=0, )
     created_on = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
