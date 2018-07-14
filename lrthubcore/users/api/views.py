@@ -1,6 +1,6 @@
 # Created by Joshua de Guzman on 09/07/2018
 # @email code@jmdg.io
-
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -53,16 +53,20 @@ class UserProfileDisabilityList(generics.ListAPIView):
     serializer_class = serializers.DisabilitiesSerializer
 
 
-class UserProfileCreate(generics.CreateAPIView):
-    queryset = models.UserProfile.objects.all()
+class UserProfileList(generics.ListCreateAPIView):
     serializer_class = serializers.UserProfileSerializer
+
+    def get_queryset(self):
+        queryset = models.UserProfile.objects.all()
+        user_id = int(self.request.GET.get('user_id', None))
+        return queryset.filter(user_id=user_id)
 
     def create(self, request, *args, **kwargs):
         user = self.request.user
         request_user_id = int(request.POST.get('user_id', ''))
 
         if user.id == request_user_id:
-            super(UserProfileCreate, self).create(request, args, kwargs)
+            super(UserProfileList, self).create(request, args, kwargs)
             response = {"status_code": status.HTTP_201_CREATED,
                         "message": "Successfully created",
                         "result": request.data}
