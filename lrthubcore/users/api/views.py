@@ -76,7 +76,7 @@ class UserProfileList(generics.ListCreateAPIView):
 
         response = {"status_code": status.HTTP_403_FORBIDDEN,
                     "message": "You are not allowed to continue with the request",
-                    "result": request.data}
+                    "result": None}
         return Response(response)
 
 
@@ -100,7 +100,7 @@ class UserProfileDetail(generics.RetrieveUpdateDestroyAPIView):
 
         response = {"status_code": status.HTTP_403_FORBIDDEN,
                     "message": "You are not allowed to continue with the request",
-                    "result": request.data}
+                    "result": None}
         return Response(response)
 
     def patch(self, request, *args, **kwargs):
@@ -119,5 +119,5 @@ class UserProfileDetail(generics.RetrieveUpdateDestroyAPIView):
 
         response = {"status_code": status.HTTP_403_FORBIDDEN,
                     "message": "You are not allowed to continue with the request",
-                    "result": request.data}
+                    "result": None}
         return Response(response)
