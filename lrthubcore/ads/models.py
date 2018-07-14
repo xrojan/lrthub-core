@@ -19,6 +19,7 @@ class Advertisement(models.Model):
     interstitial_image = models.CharField(max_length=255)
     banner_ad_image = models.CharField(max_length=255)
     video_url = models.CharField(max_length=255, blank=True)
+    ad_url = models.CharField(max_length=255, blank=True)
     criteria = models.ManyToManyField(AdvertisementCriteria, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
