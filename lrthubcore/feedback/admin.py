@@ -18,3 +18,6 @@ class FeedbackConversation(admin.ModelAdmin):
     list_display = ('incident_subject', 'incident_date', 'employee_name', 'full_name', 'contact_number')
     inlines = (FeedbackMessagesInline,)
     readonly_fields = ('sender_id', 'receiver_id')
+
+
+admin.site.register(FeedbackMessage)
