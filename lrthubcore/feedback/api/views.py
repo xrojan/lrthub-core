@@ -51,11 +51,14 @@ class FeedbackConversationCreate(generics.CreateAPIView):
         # Validate if the authentication request is equal to the sender_id
         elif user.id == request_sender_id:
             super(FeedbackConversationCreate, self).create(request, args, kwargs)
-            response = {"status_code": status.HTTP_200_OK, "message": "Successfully created", "result": request.data}
+            response = {"status_code": status.HTTP_201_CREATED,
+                        "message": "Successfully created",
+                        "result": request.data}
             return Response(response)
         else:
             response = {"status_code": status.HTTP_403_FORBIDDEN,
-                        "message": "You are not allowed to create the requested conversation", "result": None}
+                        "message": "You are not allowed to create the requested conversation",
+                        "result": None}
             return Response(response)
 
 
